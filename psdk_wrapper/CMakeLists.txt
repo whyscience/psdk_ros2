@@ -14,9 +14,15 @@ if(NOT CMAKE_CXX_STANDARD)
 endif()
 
 
-if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
-  add_compile_options(-Wall -Wextra -Wpedantic)
-endif()
+# if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+#   add_compile_options(-Wall -Wextra -Wpedantic)
+# endif()
+
+# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-pedantic -Wno-missing-field-initializers -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable
+#   -Wno-format-truncation -Wno-unused-but-set-parameter -Wno-deprecated-declarations -Wno-return-type -Wno-deprecated-declarations
+#   -Wno-format-overflow")
 
 # find dependencies
 add_definitions(-DSYSTEM_ARCH_LINUX)
@@ -202,7 +208,7 @@ install(TARGETS
   RUNTIME DESTINATION lib/${PROJECT_NAME}
 )
 
-install(DIRECTORY 
+install(DIRECTORY
   include/
   ${PSDK_PATH}/psdk_lib/include/
   ${DJI_STREAMING_PATH}/
@@ -210,7 +216,7 @@ install(DIRECTORY
   ${DJI_OSAL_PATH}/
   ${DJI_UTILS_PATH}/
   DESTINATION include/
-  FILES_MATCHING 
+  FILES_MATCHING
     PATTERN "*.h"
     PATTERN "*.hpp"
 )
