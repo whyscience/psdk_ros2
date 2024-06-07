@@ -18,11 +18,14 @@ endif()
 #   add_compile_options(-Wall -Wextra -Wpedantic)
 # endif()
 
-# set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -Wextra -Wpedantic")
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic")
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wno-pedantic -Wno-missing-field-initializers -Wno-sign-compare -Wno-unused-parameter -Wno-unused-variable
-#   -Wno-format-truncation -Wno-unused-but-set-parameter -Wno-deprecated-declarations -Wno-return-type -Wno-deprecated-declarations
-#   -Wno-format-overflow")
+set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wno-implicit-function-declaration")
+# 添加全局编译选项来抑制特定警告
+add_compile_options(
+    -Wno-format-overflow
+    -Wno-format-truncation
+    -Wno-deprecated-declarations
+    -Wno-return-type
+)
 
 # find dependencies
 add_definitions(-DSYSTEM_ARCH_LINUX)
